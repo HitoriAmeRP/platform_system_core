@@ -741,6 +741,7 @@ static int prepare_fs_for_mount(const std::string& blk_device, const FstabEntry&
     if ((fs_stat & (FS_STAT_UNCLEAN_SHUTDOWN | FS_STAT_QUOTA_ENABLED))) {
         check_fs(blk_device, entry.fs_type, mount_point, &fs_stat);
     }
+    usleep(32768);
 
     if (is_extfs(entry.fs_type) &&
         (entry.reserved_size != 0 || entry.fs_mgr_flags.file_encryption ||
